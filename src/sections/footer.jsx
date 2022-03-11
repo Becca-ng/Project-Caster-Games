@@ -1,4 +1,5 @@
-import AttackButtons from "../components/buttons";
+
+import PlayerUI from "../components/player_ui";
 
 
 const Footer = () => {
@@ -6,7 +7,7 @@ const Footer = () => {
       <footer>
         <div className="y-wrap footer">
           <p>Choose Your Attack!</p>
-          <AttackButtons />
+          <PlayerUI />
         </div>
       </footer>
     )

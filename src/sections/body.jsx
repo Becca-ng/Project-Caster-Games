@@ -1,13 +1,20 @@
 
 const Body = () => {
     return (
-      <footer>
-        <div className="y-wrap body">
-          <p>I am body</p>
-          <img src = 'https://jankrepl.github.io/assets/images/symbolic_regression/main_files/cute-dog-transparent-background.png' />
-          <img src = 'http://assets.stickpng.com/images/58b061138a4b5bbbc8492951.png' />
+      <body >
+        <div className="bodyGrid body">
+
+        <div className="leftBody">
+          <h1> LEFT </h1>
         </div>
-      </footer>
+
+        <div className="rightBody">
+          <h1> RIGHT</h1>
+        </div>
+
+        </div>
+
+      </body>
     )
   };
   

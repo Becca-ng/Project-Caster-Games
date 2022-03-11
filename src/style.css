@@ -10,10 +10,8 @@
     margin: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('/Users/beccung/Desktop/cast_game/src/images/background.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+  background-color: rgb(244, 213, 102);
+    overflow: hidden;
   }
 
   .header{
@@ -27,6 +25,29 @@
     text-align: center;
   }
 
+  .headGrid{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  }
+
+  .bodyGrid{
+    position: relative;
+    display: grid;
+    margin-top:5%;
+    border: 10px solid white;
+    grid-template-columns: auto auto;
+    height:60%;
+    text-align: center;
+  }
+  
+  .leftBody{
+    background-color: aqua;
+  }
+  
+  .rightBody{
+    background-color: brown;
+  }
+
   .footer{
     position: fixed;
     left: 0;
@@ -36,4 +57,8 @@
     background-color: black;
     color: white;
     text-align: center;
+  }
+
+  .btnbox {
+    display: flex;
   }
