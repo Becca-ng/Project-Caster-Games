@@ -13,3 +13,6 @@ March 10:
 -buttons returned a string when clicked
 -messing around with CSS 
  
+ March 11:
+ -worked on dialog database
+ 
