@@ -12,7 +12,7 @@ const [counter,setCounter] = useState(3);
 
 const newOPPick = () => {
     const choices = ["fire","water","grass"];
-    setHouse(choices[Math.floor(Math.random() * 3)]);
+    setOP(choices[Math.floor(Math.random() * 3)]);
     // I assume this is to pick a random element 
 };
 
@@ -20,14 +20,38 @@ useEffect(() =>
 {newOPPick()} , []);
 
 const Result = () => {
+    if (myChoice === "fire" && OPChoice === "grass"){
+        setPlayerWin(true);
+        console.log('win');
+    }
+    else if (myChoice === "grass" && OPChoice === "water"){
+        setPlayerWin(true);
+        console.log('win')
+    }
+    else if 
+    (myChoice === "water" && OPChoice === "fire"){
+        setPlayerWin(true);
+        console.log('win')
+    }
+    else if (myChoice === "fire" && OPChoice === "grass"){
+        setPlayerWin(false);
+        console.log('lose');
+    }
+    else if (myChoice === "grass" && OPChoice === "water"){
+        setPlayerWin("false");
+        console.log('lose')
+    }
+    else if (myChoice === "water" && OPChoice === "fire"){
+        setPlayerWin(false);
+        console.log('lose')
+    }
+    else{console.log("draw")};
+};
 
-    // if (myChoice === "fire" && OPChoice === "grass"){setPlayerWing("win"); setscore(score + 1);}
-    // else if (myChoice === "grass" && OPChoice === "water"){setPlayerWing("win"); setscore(score + 1);}
-    // else if (myChoice === "water" && OPChoice === "fire"){setPlayerWing("win"); setscore(score + 1);}
-    // else if (myChoice === "fire" && OPChoice === "grass"){setPlayerWing("lose"); setscore(score - 1);}
-    // else if (myChoice === "grass" && OPChoice === "water"){setPlayerWing("lose"); setscore(score - 1);}
-    // else if (myChoice === "water" && OPChoice === "fire"){setPlayerWing("lose"); setscore(score - 1);}
+useEffect(() => {
+    Result();
+   }, [OP])};
 
+export default Game;
 
-}
-}
+ 
