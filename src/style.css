@@ -5,15 +5,16 @@
     padding: 0;
   }
   
-  body,
-  html {
+  
+  .body {
     margin: 0;
     width: 100vw;
     height: 100vh;
-  background-color: rgb(244, 213, 102);
+   background-color: rgb(244, 213, 102);
     overflow: hidden;
   }
 
+  
   .header{
     position: fixed;
     left: 0;

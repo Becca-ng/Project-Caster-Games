@@ -1,20 +1,16 @@
+import { Routes, Route } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import GameScreen from "../views/gameScreen";
+import PlayerUI from "../components/player_ui";
 
 const Body = () => {
+// const navigate = useNavigate();
+
     return (
-      <body >
-        <div className="bodyGrid body">
-
-        <div className="leftBody">
-          <h1> LEFT </h1>
-        </div>
-
-        <div className="rightBody">
-          <h1> RIGHT</h1>
-        </div>
-
-        </div>
-
-      </body>
+    <>
+    <GameScreen />
+    </>
     )
   };
   

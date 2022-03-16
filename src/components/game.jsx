@@ -1,47 +1,47 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Game = ({score,mychoice,setscore}) => {
+const Game = ({myChoice}) => {
 
-
-const [OPChoice, setOPChoice] = useState("");
-    // line 5 saves opponents choice 
+const [opChoice, setopChoice] = useState("");
 const [playerWin, setPlayerWin] = useState("");
 
-const [counter,setCounter] = useState(3);
+const rr = () => {
+    console.log('rerender');
+}
 
 const newOPPick = () => {
     const choices = ["fire","water","grass"];
-    setOP(choices[Math.floor(Math.random() * 3)]);
-    // I assume this is to pick a random element 
+    setopChoice(choices[Math.floor(Math.random() * 3)]);
+    console.log(myChoice);
 };
 
 useEffect(() => 
 {newOPPick()} , []);
 
 const Result = () => {
-    if (myChoice === "fire" && OPChoice === "grass"){
+    if (myChoice === "fire" && opChoice === "grass"){
         setPlayerWin(true);
         console.log('win');
     }
-    else if (myChoice === "grass" && OPChoice === "water"){
+    else if (myChoice === "grass" && opChoice === "water"){
         setPlayerWin(true);
         console.log('win')
     }
     else if 
-    (myChoice === "water" && OPChoice === "fire"){
+    (myChoice === "water" && opChoice === "fire"){
         setPlayerWin(true);
         console.log('win')
     }
-    else if (myChoice === "fire" && OPChoice === "grass"){
+    else if (myChoice === "fire" && opChoice === "water"){
         setPlayerWin(false);
         console.log('lose');
     }
-    else if (myChoice === "grass" && OPChoice === "water"){
-        setPlayerWin("false");
+    else if (myChoice === "grass" && opChoice === "fire"){
+        setPlayerWin(false);
         console.log('lose')
     }
-    else if (myChoice === "water" && OPChoice === "fire"){
+    else if (myChoice === "water" && opChoice === "grass"){
         setPlayerWin(false);
         console.log('lose')
     }
@@ -50,8 +50,16 @@ const Result = () => {
 
 useEffect(() => {
     Result();
-   }, [OP])};
+   }, [opChoice]);
 
+return (
+    <div className="game">
+         my choice:{myChoice} <br />
+         OP Choice:{opChoice} <br />
+    </div>
+  );
+
+}
 export default Game;
 
  

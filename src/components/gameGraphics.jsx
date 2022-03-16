@@ -1,6 +1,8 @@
+import Game from "./game";
+
 const GameGraphics = () => {
     return (
-        <body >
+        < div className = "body">
             <div className="bodyGrid body">
 
                 <div className="leftBody">
@@ -8,12 +10,10 @@ const GameGraphics = () => {
                 </div>
 
                 <div className="rightBody">
-                    <h1> RIGHT</h1>
+                    <h1> RIGHT </h1>
                 </div>
-
             </div>
-
-        </body>
+        </div>
     )
 };
 
