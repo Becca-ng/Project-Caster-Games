@@ -1,65 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from 'react';
 
-const Game = ({myChoice}) => {
+const Game = ({ action, battleResults, randomChoice, userChoice }) => {
 
-const [opChoice, setopChoice] = useState("");
-const [playerWin, setPlayerWin] = useState("");
+  useEffect(() => {
+    const result = checkMatchUp();
+    action(result);
+  }, [userChoice]);
 
-const rr = () => {
-    console.log('rerender');
-}
-
-const newOPPick = () => {
-    const choices = ["fire","water","grass"];
-    setopChoice(choices[Math.floor(Math.random() * 3)]);
-    console.log(myChoice);
-};
-
-useEffect(() => 
-{newOPPick()} , []);
-
-const Result = () => {
-    if (myChoice === "fire" && opChoice === "grass"){
-        setPlayerWin(true);
-        console.log('win');
+  const checkMatchUp = () => {
+    if (
+      (userChoice === 'fire' && randomChoice === 'grass') ||
+      (userChoice === 'grass' && randomChoice === 'water') ||
+      (userChoice === 'water' && randomChoice === 'fire')
+    ) {
+      return true;
+    } else if (
+      (userChoice === 'fire' && randomChoice === 'water') ||
+      (userChoice === 'grass' && randomChoice === 'fire') ||
+      (userChoice === 'water' && randomChoice === 'grass')
+    ) {
+      return false;
+    } else {
+      return null;
     }
-    else if (myChoice === "grass" && opChoice === "water"){
-        setPlayerWin(true);
-        console.log('win')
-    }
-    else if 
-    (myChoice === "water" && opChoice === "fire"){
-        setPlayerWin(true);
-        console.log('win')
-    }
-    else if (myChoice === "fire" && opChoice === "water"){
-        setPlayerWin(false);
-        console.log('lose');
-    }
-    else if (myChoice === "grass" && opChoice === "fire"){
-        setPlayerWin(false);
-        console.log('lose')
-    }
-    else if (myChoice === "water" && opChoice === "grass"){
-        setPlayerWin(false);
-        console.log('lose')
-    }
-    else{console.log("draw")};
-};
+  };
 
-useEffect(() => {
-    Result();
-   }, [opChoice]);
-
-return (
-    <div className="game">
-         my choice:{myChoice} <br />
-         OP Choice:{opChoice} <br />
-    </div>
+  return (
+    <h1> Battle Winner: {battleResults} </h1>
   );
 
 }
-export default Game;
 
- 
+export default Game;

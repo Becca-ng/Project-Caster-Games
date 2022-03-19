@@ -1,65 +1,56 @@
 * {
-    box-sizing: border-box;
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-  }
+  box-sizing: border-box;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
   
   
-  .body {
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
-   background-color: rgb(244, 213, 102);
-    overflow: hidden;
-  }
+body,
+html {
+  height: 100%;
+}
 
+.y-sticky {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.y-wrap {
+  margin: 0 auto;
+  width: 90%;
+}
+.header {
+  background-color: #ccc;
+  padding: 20px 0;
+}
+
+gameScreen {
+  flex: 1 0 auto;
+  padding: 20px 0;
+}
+
+.footer {
+  background-color: #333;
+  color: rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+  padding: 30px 0;
+}
+
+.player-block {
+  display: flex;
+}
+
+.player-block__player {
+      text-align: center;
+      padding: 100px 0;
+      width: 100%;
+    }
   
-  .header{
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 10%;
-    width: 100%;
-    background-color: black;
-    color: white;
-    text-align: center;
-  }
-
-  .headGrid{
-  display: grid;
-  grid-template-columns: auto auto auto;
-  }
-
-  .bodyGrid{
-    position: relative;
-    display: grid;
-    margin-top:5%;
-    border: 10px solid white;
-    grid-template-columns: auto auto;
-    height:60%;
-    text-align: center;
-  }
-  
-  .leftBody{
-    background-color: aqua;
-  }
-  
-  .rightBody{
-    background-color: brown;
-  }
-
-  .footer{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    height:30%;
-    width: 100%;
-    background-color: black;
-    color: white;
-    text-align: center;
-  }
-
-  .btnbox {
-    display: flex;
+  button {
+    border: 1px solid transparent;
+    cursor: pointer;
+    margin: 0 6px;
+    padding: 6px 16px;
   }
