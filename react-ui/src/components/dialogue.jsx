@@ -5,10 +5,14 @@ const Dialogue = ({ battleResults, nextMatch }) => {
     //Create a local state for the quote
     const [quote, setQuote] = useState('');
 
-    //This useEffect will fire off an async api call every time the component loads
-    useEffect(async () => {
-        //Await is needed in order to make sure getQuote resolves before we move on
-        await getQuote();
+    //This useEffect will fire off every time the component loads
+    useEffect(() => {
+        //There is a warning that useEffect needs to be syncronus so you have to wrap the async function here
+        async function callGetQuote() {
+            //Need to await here for async calls
+            await getQuote();
+        }
+        callGetQuote(); //Call the async function wrapper
     },[])
 
     // Makes a callout to an API Async is required

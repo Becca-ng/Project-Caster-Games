@@ -1,12 +1,16 @@
 import {useEffect} from 'react';
 
-const TopUI = ({playerHealth, opponentHealth, battleNumber, currentTurn, finalizeMatch}) => {
+const TopUI = ({playerHealth, opponentHealth, battleNumber, battleResults, currentTurn, finalizeMatch, endGame}) => {
 
   useEffect(() => {
-    if(playerHealth <= 0 || opponentHealth <= 0) {
+    if(opponentHealth <= 0) {
       finalizeMatch();
+    }if(battleNumber > 3){
+      endGame(true);
+    } else if (playerHealth <= 0) {
+      endGame(false);
     }
-  });
+  }, [opponentHealth, battleNumber, playerHealth]);
 
 return (
     <div className = "top-container">
@@ -14,11 +18,11 @@ return (
   <p>Your Health: {playerHealth}</p>
   </div>
   <div className = " top title">
-      <h1>Dum Becca Game</h1> <br/>
+      <h1>Caster Games</h1> <br/>
       <h1>Battle {battleNumber}</h1>
   </div>
   <div className='top Health opponentHealth'>
-  <p> Oponnents Health: {opponentHealth}</p> 
+  <p> Opponents Health: {opponentHealth}</p> 
   </div>
 </div>
 )

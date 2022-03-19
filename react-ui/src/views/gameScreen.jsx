@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Game from '../components/game';
 import Player from '../components/player';
 import Winner from '../components/ResultScreen';
+import Modal from '../components/modal';
 import { TopUI, BottomUI } from "../indicies/uiIndex";
 import { User, Vola, Thera, Serena } from "../indicies/avatarIndex";
 
@@ -14,10 +15,15 @@ const GameScreen = () => {
   const [opponentAvatar, setOppopnentAvatar] = useState(Vola);
   const [userChoice, setUserChoice] = useState('');
   const [randomChoice, setRandomChoice] = useState('');
-  
+
   const [stats, setStats] = useState({
     opponentHealth: 2,
     playerHealth: 2
+  });
+
+  const [modalOptions, setModalOptions] = useState({
+    text: '',
+    show: false
   });
 
   const [battleResults, setBattleResults] = useState('');
@@ -48,13 +54,13 @@ const GameScreen = () => {
     } else {
       status = 'the game is a draw';
     }
-    if(currentTurn > 0){
+    if (currentTurn > 0) {
       setBattleResults(status);
     }
     setStats(_stats);
   };
 
-  //Resets the match after the winner is determined (top_ui)
+  //Resets the match if the player wins
   const finalizeMatch = () => {
     const _stats = { ...stats };
     _stats.opponentHealth = 2;
@@ -67,40 +73,78 @@ const GameScreen = () => {
 
   //Starts a new match and hides the dialogue box (dialogue)
   const nextMatch = () => {
-    console.log("called")
     setIsDialogue(false);
     setBattleResults('');
   }
 
+  //Ends the game
+  const endGame = (winner) => {
+    const _modalOptions = { ...modalOptions };
+    _modalOptions.show = true;
+    _modalOptions.text = winner ? WINNER_TEXT : LOSER_TEXT;
+    setModalOptions(_modalOptions);
+  }
+
+  //Starts a new game
+  const newGame = () => {
+    console.log('starting new game');
+    const _stats = { ...stats };
+    _stats.opponentHealth = 2;
+    _stats.playerHealth = 2;
+    setStats(_stats);
+    setCurrentTurn(0);
+    setBattleNumber(1);
+    setIsDialogue(false);
+    const _modalOptions = { ...modalOptions };
+    _modalOptions.show = true;
+    _modalOptions.text = START_TEXT;
+    setModalOptions(_modalOptions);
+  }
+
+  //Function to close the modal
+  const closeModal = () => {
+    const _modalOptions = { ...modalOptions };
+    _modalOptions.show = false;
+    setModalOptions(_modalOptions);
+    console.log(_modalOptions);
+    if(_modalOptions.text.includes('you')){
+      newGame();
+    }
+  }
+
   return (
     <div className="y-wrap">
-      <TopUI 
-        playerHealth={stats.playerHealth} 
-        opponentHealth={stats.opponentHealth} 
-        battleNumber={battleNumber} 
+      <TopUI
+        playerHealth={stats.playerHealth}
+        opponentHealth={stats.opponentHealth}
+        battleNumber={battleNumber}
+        battleResults={battleResults}
         currentTurn={currentTurn}
         finalizeMatch={finalizeMatch}
+        endGame={endGame}
       />
-      <Winner />  
       <Game
         action={finalResults}
         battleResults={battleResults}
         randomChoice={randomChoice}
         userChoice={userChoice}
       />
-      <div className='player-block'>
+      <Modal
+        handleClose={closeModal}
+        modalText={modalOptions.text}
+        show={modalOptions.show}
+      />
+      <div className='player-block' >
         <Player
           avatar={User}
           choice={userChoice}
-          className = "user img"
         />
         <Player
           avatar={opponentAvatar}
           choice={randomChoice}
-          className = "opponent img"
         />
       </div>
-      <BottomUI 
+      <BottomUI
         action={handleClick}
         isDialogue={isDialogue}
         battleResults={battleResults}
@@ -112,3 +156,7 @@ const GameScreen = () => {
 };
 
 export default GameScreen;
+
+const START_TEXT = 'click the button to start'
+const WINNER_TEXT = 'you win'
+const LOSER_TEXT = ' haha you lose'

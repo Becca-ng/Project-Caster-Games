@@ -3,14 +3,16 @@ import React from "react";
 const PlayerUI = ({ action }) => {
 
     return (
-        <div className = "button_box">
-                <button data-id='fire' className='button fireBtn' onClick={action} >
+        <div className="buttonGroup">
+            <fire>
+                <button data-id='fire' className='fireBtn' onClick={action} >
                     Fire
                 </button>
-                <button data-id='water' className='button waterBtn' onClick={action} >
+            </fire>
+                <button data-id='water' className='waterBtn'  onClick={action} >
                     Water
                 </button>
-                <button data-id='grass' className='button grassBtn' onClick={action} >
+                <button data-id='grass' className='grassBtn'  onClick={action} >
                     Grass
                 </button>
         </div>
