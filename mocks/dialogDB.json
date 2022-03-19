@@ -1,0 +1,32 @@
+[
+{
+    "battleId": "1",
+    "name" : "Vola",
+    "title": "The Warrior of an Undying Flame",
+    "element" : "Fire",
+    "intro_line": "Welcome Challenger! I hope you can show me your burning passion. This is my familiar Igneos, a fiery fighter, just like me!",
+    "battle_line": "So, will you be reduced to ash or survive the inferno? Show me your skills!",
+    "battle_win": "Woah! It looks like I was the one who got singed!",
+    "battle_lose": "Looks like your passion just wasn't hot enough..."
+},
+{
+    "battleId": "2",
+    "name" : "Thera",
+    "title": "The One who Controls all that is Green",
+    "element" : " Grass",
+    "intro_line": "Oh? What a surprise! It seems that you've beaten Vola.",
+    "battle_line": "You better not underestimate Vinnie's powers, she harbors the power of the Earth!",
+    "battle_win": "You won? I guess I underestimated you instead...",
+    "battle_lose": "You've wasted my time. I could have been watering my plants."
+},
+{
+    "battleId": "3",
+    "name" : "Serene",
+    "title": "The Master of the Unstoppable Waves",
+    "element":"Water",
+    "intro_line": "I'm impressed you got this far! I'm Serene and I represent the ebb and flow of the tides.",
+    "battle_line": "This is the last battle! Don't get washed away by Aquisia!",
+    "battle_win": "You really are skilled. Congratulations on beating all three of us!",
+    "battle_lose": "Hmph...you failed."
+}
+]
