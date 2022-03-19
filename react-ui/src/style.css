@@ -27,7 +27,12 @@ html {
   background-color: purple;
   color: aliceblue;
   padding: 5px;
+  font-size:larger;
 
+}
+
+.overlay{
+  z-index: 5;
 }
 
 .top-container{

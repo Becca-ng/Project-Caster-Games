@@ -15,14 +15,14 @@ const TopUI = ({playerHealth, opponentHealth, battleNumber, battleResults, curre
 return (
     <div className = "top-container">
     <div className = "top Health userHealth">
-  <p>Your Health: {playerHealth}</p>
+  <h1>Your Health: {playerHealth}</h1>
   </div>
   <div className = " top title">
-      <h1>Caster Games</h1> <br/>
-      <h1>Battle {battleNumber}</h1>
+      <h2>Caster Games</h2> <br/>
+      <p>Battle {battleNumber}</p>
   </div>
   <div className='top Health opponentHealth'>
-  <p> Opponents Health: {opponentHealth}</p> 
+  <h1> Opponents Health: {opponentHealth}</h1> 
   </div>
 </div>
 )

@@ -3,7 +3,7 @@
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session'); // potential delete
-const dialog = require('./mocks/dialogDB.json');
+const dialogue = require('./mocks/dialogDB.json');
 const passport = require('passport'); // potential delete
 const path = require('path'); // potential delete
 
@@ -32,14 +32,14 @@ app.get('/heartbeat', (req, res) => {
   })
 });
 
-app.get('/dialog', (req, res) => {
+app.get('/dialogue', (req, res) => {
   let found;
   if(req.query.name) {
-    found = dialog.filter(line => line.name === req.query.name)[0];
+    found = dialogue.filter(line => line.name === req.query.name)[0];
   } else if(req.query.battleId) {
-    found = dialog.filter(line => line.battleId === req.query.battleId)[0];
+    found = dialogue.filter(line => line.battleId === req.query.battleId)[0];
   } else {
-    found = dialog;
+    found = dialogue;
   }
   res.json(found);
 });

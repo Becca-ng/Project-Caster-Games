@@ -13,6 +13,9 @@ const GameScreen = () => {
   const [currentTurn, setCurrentTurn] = useState(0);
 
   const [opponentAvatar, setOppopnentAvatar] = useState(Vola);
+  const [playerOverlay, setPlayerOverlay] = useState();
+  const [opponentOverlay, setOpponentOverlay] = useState();
+
   const [userChoice, setUserChoice] = useState('');
   const [randomChoice, setRandomChoice] = useState('');
 
@@ -60,7 +63,7 @@ const GameScreen = () => {
     setStats(_stats);
   };
 
-  //Resets the match if the player wins
+  //Resets the match if the player wins (TopUI)
   const finalizeMatch = () => {
     const _stats = { ...stats };
     _stats.opponentHealth = 2;
@@ -75,9 +78,19 @@ const GameScreen = () => {
   const nextMatch = () => {
     setIsDialogue(false);
     setBattleResults('');
+    switch (battleNumber) {
+      case 2:
+        setOppopnentAvatar(Thera);
+        break;
+      case 3:
+        setOppopnentAvatar(Serena);
+        break;
+      default:
+        console.log(`Sorry, bad ${battleNumber}.`);
+    }
   }
 
-  //Ends the game
+  //Ends the game (TopUI)
   const endGame = (winner) => {
     const _modalOptions = { ...modalOptions };
     _modalOptions.show = true;
@@ -95,6 +108,7 @@ const GameScreen = () => {
     setCurrentTurn(0);
     setBattleNumber(1);
     setIsDialogue(false);
+    setOppopnentAvatar(Vola);
     const _modalOptions = { ...modalOptions };
     _modalOptions.show = true;
     _modalOptions.text = START_TEXT;
@@ -138,10 +152,12 @@ const GameScreen = () => {
         <Player
           avatar={User}
           choice={userChoice}
+          overlay={playerOverlay}
         />
         <Player
           avatar={opponentAvatar}
           choice={randomChoice}
+          overlay={opponentOverlay}
         />
       </div>
       <BottomUI
